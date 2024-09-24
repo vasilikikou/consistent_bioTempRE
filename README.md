@@ -29,12 +29,26 @@ environment with the required packages.
 We used the test data created for the 2012 Informatics for Integrating
 Biology and the Bedside (i2b2) challenge for Clinical Records.
 You can find the dataset [here](https://portal.dbmi.hms.harvard.edu/projects/n2c2-nlp/).
-First, you need to create an account and then, you can download the data from  
+First, you need to create an account and then, you can download the data from 
 the "2012 Temporal Relations Challenge Downloads" section.
 
-[comment]: <> (## TempRE)
+When the data is obtained, in order to create the gold and candidate pairs of events, 
+and then their union, for all the xml files in a folder, run the following scripts 
+with the path to the folder as input:
+```
+python data_preparation.py -path /path/to/the/data/folder 
+python create_union_pairs.py -path /path/to/the/data/folder
+```
+
+The generated pairs will be saved in xml format in the current directory.
+We provide the pairs for the test set of the i2b2 dataset in 
+the "test_gold_pairs.xml", "test_candidate_pairs.xml", and "gold_and_candidate_pairs.xml" files.
 
 
+## Zero-shot BioTempRE
+
+The code for running the prompts and obtaining the LLMs' responses can be found in the 
+"llm_requests" folder.
 
 [comment]: <> (## Temporal consistency and evaluation)
 

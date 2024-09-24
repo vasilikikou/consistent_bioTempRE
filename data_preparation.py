@@ -5,43 +5,43 @@ import statistics
 from utils.data_handlers import get_xml_files, load_data, get_gold_pairs, get_candidate_pairs, save_pairs
 
 
-def create_pairs(test_path):
-    # Get filenames
-    test_files = get_xml_files(test_path)
+def create_pairs(data_path):
+    # Get the filenames of only xml files
+    filenames = get_xml_files(data_path)
 
-    test_files.remove("31.xml")
+    filenames.remove("31.xml")
 
-    print("Found", len(test_files), "xml files for the test set")
+    print("Found", len(filenames), "xml files")
 
     # Load data
-    test_texts, test_events, test_tlinks = load_data(test_path, test_files)
+    texts, events, tlinks = load_data(data_path, filenames)
 
     # Check outputs
-    assert len(test_files) == len(test_texts) == len(test_events) == len(test_tlinks)
+    assert len(filenames) == len(texts) == len(events) == len(tlinks)
 
     # Get the gold pairs
-    print("Extracting gold pairs...")
-    test_gold_pairs = get_gold_pairs(test_events, test_tlinks)
+    print("Extracting the gold pairs...")
+    gold_pairs = get_gold_pairs(events, tlinks)
 
-    print("Got gold pairs for", len(test_gold_pairs), "reports")
-    print("Found", len(test_gold_pairs[0]), "gold pairs for the first report")
-    assert len(test_gold_pairs[0]) == len(test_tlinks[0])
+    print("Got gold pairs for", len(gold_pairs), "reports")
+    print("Found", len(gold_pairs[0]), "gold pairs for the first report")
+    assert len(gold_pairs[0]) == len(tlinks[0])
 
     # Statistics
     num_gold_pairs_test = []
 
-    for p in test_gold_pairs:
+    for p in gold_pairs:
         num_gold_pairs_test.append(len(p))
 
-    print("The average number of gold pairs per report in the test set is", statistics.mean(num_gold_pairs_test))
+    print("The average number of gold pairs per report is", statistics.mean(num_gold_pairs_test))
 
     # Save pairs
-    save_pairs(test_files, test_gold_pairs, "test_gold_pairs.xml", mode="gold")
+    save_pairs(filenames, gold_pairs, "test_gold_pairs.xml", mode="gold")
     print("Saved gold pairs.")
 
     # Get the generated candidate pairs
     print("Generating the candidate pairs...")
-    test_cnd_pairs = get_candidate_pairs(test_texts, test_events, test_tlinks)
+    test_cnd_pairs = get_candidate_pairs(texts, events, tlinks)
 
     print("Got candidate pairs for", len(test_cnd_pairs), "reports")
     print("Found", len(test_cnd_pairs[0]), "candidate pairs for the first report")
@@ -52,10 +52,10 @@ def create_pairs(test_path):
     for p in test_cnd_pairs:
         num_cnd_pairs_test.append(len(p))
 
-    print("The average number of candidate pairs per report in the test set is", statistics.mean(num_cnd_pairs_test))
+    print("The average number of candidate pairs per report is", statistics.mean(num_cnd_pairs_test))
 
     # Save pairs
-    save_pairs(test_files, test_cnd_pairs, "test_candidate_pairs.xml", mode="candidate")
+    save_pairs(filenames, test_cnd_pairs, "test_candidate_pairs.xml", mode="candidate")
     print("Saved candidate pairs.")
 
 
