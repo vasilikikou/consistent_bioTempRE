@@ -1,0 +1,11 @@
+lxml
+
+nltk
+
+openai 
+backoff
+huggingface_hub
+
+numpy
+pandas
+scikit-learn

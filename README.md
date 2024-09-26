@@ -47,8 +47,10 @@ the "test_gold_pairs.xml", "test_candidate_pairs.xml", and "gold_and_candidate_p
 
 ## Zero-shot BioTempRE
 
-The code for running the prompts and obtaining the LLMs' responses can be found in the 
-"llm_requests" folder.
+The code for running the prompts and obtaining LLMs' responses can be found in the 
+"llm_requests" folder. You can add your "api_key" in the "connection.py" script and then, 
+run "main.py" with your specified parameters 
+(run ``python main.py --help`` for a detailed list of the arguments).
 
 [comment]: <> (## Temporal consistency and evaluation)
 
