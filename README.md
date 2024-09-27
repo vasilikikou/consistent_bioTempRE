@@ -51,6 +51,8 @@ The code for running the prompts and obtaining LLMs' responses can be found in t
 "llm_requests" folder. You can add your "api_key" in the "connection.py" script and then, 
 run "main.py" with your specified parameters 
 (run ``python main.py --help`` for a detailed list of the arguments).
+The responses will be saved in the path provided in the form of 
+json files, one json file per report.
 
 [comment]: <> (## Temporal consistency and evaluation)
 

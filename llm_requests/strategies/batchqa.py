@@ -123,6 +123,6 @@ def process_query(
     results["num_tries"] += 1
 
     # save
-    # with open(save_file, "w") as file:
-    #     json.dump(results, file, indent=4)
+    with open(save_file, "w") as file:
+        json.dump(results, file, indent=4)
     return results

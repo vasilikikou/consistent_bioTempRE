@@ -78,7 +78,6 @@ def main(
     print("Finished the queries")
     print(f"Saving {len(results)} results")
     # print(results)
-    # TODO: save in Vasiliki format
 
 
 if __name__ == "__main__":
