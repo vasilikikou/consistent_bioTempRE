@@ -53,6 +53,10 @@ run "main.py" with your specified parameters
 (run ``python main.py --help`` for a detailed list of the arguments).
 The responses will be saved in the path provided in the form of 
 json files, one json file per report.
+In order to move to the next steps you need to process the response 
+files and save them in the required xml format by running the 
+"process_responses.py" script with the necessary paths as inputs.
+
 
 [comment]: <> (## Temporal consistency and evaluation)
 
